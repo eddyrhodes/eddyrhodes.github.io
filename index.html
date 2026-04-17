@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary meta -->
+  <title>Rhodes Lab — Personalised Neuromodulation · University of Liverpool</title>
+  <meta name="description" content="Rhodes Lab develops personalised, closed-loop temporal interference stimulation therapies for Parkinson's disease and dementia. Based at the University of Liverpool, Department of Psychology." />
+  <meta name="author" content="Dr Edward Rhodes" />
+  <meta name="keywords" content="temporal interference stimulation, EEG, Parkinson's disease, dementia, neuromodulation, closed-loop, basal ganglia, precision medicine, University of Liverpool" />
+
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rhodeslab.github.io/" />
+  <meta property="og:title" content="Rhodes Lab — Personalised Neuromodulation" />
+  <meta property="og:description" content="We combine temporal interference stimulation, real-time EEG, and clinical translation to build closed-loop, patient-specific therapies for Parkinson's disease and dementia." />
+  <meta property="og:image" content="https://rhodeslab.github.io/og-image.png" />
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rhodes Lab — Personalised Neuromodulation" />
+  <meta name="twitter:description" content="We combine temporal interference stimulation, real-time EEG, and clinical translation to build closed-loop, patient-specific therapies for Parkinson's disease and dementia." />
+  <meta name="twitter:image" content="https://rhodeslab.github.io/og-image.png" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://rhodeslab.github.io/" />
+
+  <!-- Favicon placeholder — replace with your own -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f6e56'/><text x='16' y='22' text-anchor='middle' font-family='serif' font-size='18' fill='white'>R</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:            #f4f2ed;
+      --surface:       #ffffff;
+      --ink:           #1c1c1a;
+      --ink-mid:       #4c4c48;
+      --ink-muted:     #8c8c86;
+      --rule:          #ddddd6;
+      --teal:          #0f6e56;
+      --teal-light:    #e1f5ee;
+      --teal-mid:      #1d9e75;
+      --blue:          #185fa5;
+      --blue-light:    #e6f1fb;
+      --purple:        #534ab7;
+      --purple-light:  #eeedfe;
+      --sans:          'Syne', sans-serif;
+      --serif:         'Source Serif 4', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--serif);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-brand {
+      padding: 16px 0;
+      font-family: var(--sans); font-size: 14px; font-weight: 600;
+      color: var(--ink); display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+    .nav-links { display: flex; }
+    .nav-links a {
+      font-family: var(--sans); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.05em; color: var(--ink-muted);
+      text-decoration: none; padding: 20px 16px;
+      border-left: 1px solid var(--rule);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.cta { color: var(--teal); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-toggle span {
+      display: block; width: 20px; height: 1.5px;
+      background: var(--ink); margin: 4px 0; transition: 0.2s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 64px 40px 52px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--rule);
+      display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: end;
+    }
+    .hero-eyebrow {
+      font-family: var(--sans); font-size: 10px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 18px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-eyebrow::after { content: ''; flex: 0 0 32px; height: 1px; background: var(--teal); }
+    .hero-h1 {
+      font-family: var(--sans); font-size: 34px; font-weight: 700;
+      line-height: 1.15; color: var(--ink); margin-bottom: 22px;
+      letter-spacing: -0.01em;
+    }
+    .hero-h1 span { color: var(--teal); }
+    .hero-lead {
+      font-size: 16px; font-weight: 300; color: var(--ink-mid);
+      line-height: 1.75; max-width: 540px; margin-bottom: 28px;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .hero-tag {
+      font-family: var(--sans); font-size: 10px; font-weight: 500;
+      padding: 4px 12px; border: 1px solid var(--rule);
+      color: var(--ink-mid); letter-spacing: 0.04em; border-radius: 2px;
+    }
+    .hero-pi {
+      background: var(--bg); border: 1px solid var(--rule);
+      padding: 22px; border-radius: 4px; margin-bottom: 12px;
+    }
+    .hero-pi-name { font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+    .hero-pi-role {
+      font-family: var(--sans); font-size: 10.5px; color: var(--ink-muted);
+      letter-spacing: 0.03em; line-height: 1.6; margin-bottom: 14px;
+    }
+    .hero-pi-stats {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      border-top: 1px solid var(--rule); padding-top: 14px;
+    }
+    .pi-stat { text-align: center; }
+    .pi-stat-num { font-family: var(--sans); font-size: 20px; font-weight: 700; color: var(--ink); }
+    .pi-stat-lbl { font-family: var(--sans); font-size: 9px; color: var(--ink-muted); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 1px; }
+    .hero-news {
+      font-family: var(--sans); font-size: 10.5px; color: var(--ink-muted);
+      display: flex; align-items: center; gap: 7px;
+    }
+    .news-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-family: var(--sans); font-size: 10px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-muted); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+    /* ── THEMES ── */
+    .themes { padding: 52px 40px; }
+    .themes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .theme-card {
+      background: var(--surface); border: 1px solid var(--rule);
+      padding: 24px 22px; border-radius: 4px;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .theme-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+    .theme-icon {
+      width: 32px; height: 32px; border-radius: 4px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+    }
+    .theme-num { font-family: var(--sans); font-size: 9.5px; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 6px; }
+    .theme-title { font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.35; }
+    .theme-body { font-size: 13px; color: var(--ink-mid); line-height: 1.65; }
+
+    /* ── FOUR P's ── */
+    .four-ps { background: var(--ink); padding: 56px 40px; }
+    .four-ps .section-label { color: rgba(255,255,255,0.35); }
+    .four-ps .section-label::after { background: rgba(255,255,255,0.12); }
+    .four-ps-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+      margin-bottom: 40px; align-items: end;
+    }
+    .four-ps-h2 {
+      font-family: var(--sans); font-size: 28px; font-weight: 700;
+      color: #fff; line-height: 1.2; letter-spacing: -0.01em;
+    }
+    .four-ps-h2 span { color: var(--teal-mid); }
+    .four-ps-lead { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.8; }
+    .ps-grid {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1px; background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .p-card { background: var(--ink); padding: 28px 22px; position: relative; transition: background 0.2s; }
+    .p-card:hover { background: #242420; }
+    .p-letter {
+      font-family: var(--sans); font-size: 52px; font-weight: 700;
+      line-height: 1; opacity: 0.12;
+      position: absolute; top: 18px; right: 18px;
+    }
+    .p-badge {
+      display: inline-block;
+      font-family: var(--sans); font-size: 9px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 2px; margin-bottom: 14px;
+    }
+    .p-title { font-family: var(--sans); font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px; line-height: 1.25; }
+    .p-body { font-size: 12.5px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 16px; }
+    .p-example {
+      font-family: var(--sans); font-size: 10px; font-weight: 500;
+      color: rgba(255,255,255,0.3); letter-spacing: 0.03em;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 12px; line-height: 1.6;
+    }
+    .p-example strong { color: rgba(255,255,255,0.55); font-weight: 600; }
+    .p-predictive   .p-letter { color: var(--teal-mid); }
+    .p-predictive   .p-badge  { background: rgba(29,158,117,0.15); color: var(--teal-mid); }
+    .p-preventive   .p-letter { color: #378add; }
+    .p-preventive   .p-badge  { background: rgba(55,138,221,0.15); color: #378add; }
+    .p-personalised .p-letter { color: #7f77dd; }
+    .p-personalised .p-badge  { background: rgba(127,119,221,0.15); color: #7f77dd; }
+    .p-participatory .p-letter { color: #ef9f27; }
+    .p-participatory .p-badge  { background: rgba(239,159,39,0.15); color: #ef9f27; }
+
+    /* ── APPROACH ── */
+    .approach {
+      background: var(--surface);
+      border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .approach-text { padding: 48px 44px; border-right: 1px solid var(--rule); }
+    .approach-h2 { font-family: var(--sans); font-size: 22px; font-weight: 700; margin-bottom: 16px; line-height: 1.25; }
+    .approach-body { font-size: 14.5px; font-weight: 300; color: var(--ink-mid); line-height: 1.8; margin-bottom: 20px; }
+    .approach-link {
+      font-family: var(--sans); font-size: 11px; font-weight: 600;
+      color: var(--teal); text-decoration: none; letter-spacing: 0.04em;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: gap 0.15s;
+    }
+    .approach-link:hover { gap: 10px; }
+    .approach-graphic { padding: 40px 36px; display: flex; align-items: center; justify-content: center; }
+
+    /* ── PUBLICATIONS ── */
+    .pubs { padding: 52px 40px; }
+    .pub-row {
+      display: grid; grid-template-columns: 44px 1fr auto;
+      gap: 0 20px; padding: 16px 0; border-bottom: 1px solid var(--rule);
+      align-items: start; transition: background 0.12s;
+    }
+    .pub-row:hover { background: rgba(15,110,86,0.03); margin: 0 -8px; padding: 16px 8px; }
+    .pub-year { font-family: var(--sans); font-size: 10.5px; color: var(--ink-muted); font-weight: 500; padding-top: 3px; }
+    .pub-title { font-size: 14px; color: var(--ink); line-height: 1.5; margin-bottom: 3px; }
+    .pub-meta { font-family: var(--sans); font-size: 10.5px; color: var(--ink-muted); }
+    .pub-meta .j { color: var(--teal); }
+    .pub-arrow { font-family: var(--sans); font-size: 14px; color: var(--rule); padding-top: 2px; transition: color 0.15s; }
+    .pub-row:hover .pub-arrow { color: var(--teal); }
+
+    /* ── JOIN ── */
+    .join-wrap { padding: 0 40px 52px; }
+    .join {
+      background: var(--teal); padding: 32px 36px; border-radius: 4px;
+      display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    }
+    .join-h3 { font-family: var(--sans); font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .join-sub { font-size: 13.5px; font-weight: 300; color: var(--teal-light); }
+    .join-btn {
+      font-family: var(--sans); font-size: 11px; font-weight: 600;
+      letter-spacing: 0.06em; padding: 10px 22px;
+      background: #fff; color: var(--teal); border: none;
+      border-radius: 2px; cursor: pointer; white-space: nowrap;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .join-btn:hover { background: var(--teal-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule); padding: 18px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--surface); flex-wrap: wrap; gap: 12px;
+    }
+    .footer-brand { font-family: var(--sans); font-size: 11px; font-weight: 600; color: var(--ink-muted); }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-family: var(--sans); font-size: 10px; color: var(--ink-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--teal); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+    .anim-1 { animation: fadeDown 0.45s ease both; }
+    .anim-2 { animation: fadeUp 0.55s ease 0.1s both; }
+    .anim-3 { animation: fadeUp 0.55s ease 0.2s both; }
+    .anim-4 { animation: fadeUp 0.55s ease 0.25s both; }
+    .anim-5 { animation: fadeUp 0.55s ease 0.3s both; }
+    .anim-6 { animation: fadeUp 0.55s ease 0.35s both; }
+    .anim-7 { animation: fadeUp 0.55s ease 0.4s both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 53px; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--rule); z-index: 99; }
+      .nav-links.open a { border-left: none; border-top: 1px solid var(--rule); padding: 14px 40px; }
+      .nav-toggle { display: block; }
+      .hero { grid-template-columns: 1fr; padding: 40px 24px 36px; gap: 32px; }
+      .hero-h1 { font-size: 26px; }
+      .themes { padding: 40px 24px; }
+      .themes-grid { grid-template-columns: 1fr; }
+      .four-ps { padding: 40px 24px; }
+      .four-ps-intro { grid-template-columns: 1fr; gap: 20px; }
+      .ps-grid { grid-template-columns: 1fr 1fr; }
+      .approach { grid-template-columns: 1fr; }
+      .approach-text { border-right: none; border-bottom: 1px solid var(--rule); padding: 36px 24px; }
+      .approach-graphic { padding: 32px 24px; }
+      .pubs { padding: 40px 24px; }
+      .join-wrap { padding: 0 24px 40px; }
+      .join { flex-direction: column; align-items: flex-start; }
+      footer { padding: 18px 24px; }
+      .nav { padding: 0 24px; }
+    }
+    @media (max-width: 540px) {
+      .ps-grid { grid-template-columns: 1fr; }
+      .hero-pi-stats { grid-template-columns: repeat(3,1fr); }
+      .four-ps-h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="nav anim-1">
+    <a class="nav-brand" href="#"><div class="nav-brand-dot"></div>Rhodes Lab</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.nextElementSibling.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#precision">Precision medicine</a>
+      <a href="#publications">Publications</a>
+      <a href="#join" class="cta">Join the lab →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero anim-2">
+    <div>
+      <div class="hero-eyebrow">Rhodes Lab · Liverpool</div>
+      <h1 class="hero-h1">Personalised neuromodulation for <span>neurodegenerative disease</span></h1>
+      <p class="hero-lead">We combine temporal interference stimulation, real-time EEG, and clinical translation to build closed-loop, patient-specific therapies for Parkinson's disease and dementia.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">TI Stimulation</span>
+        <span class="hero-tag">EEG signal processing</span>
+        <span class="hero-tag">Parkinson's disease</span>
+        <span class="hero-tag">Dementia</span>
+        <span class="hero-tag">Closed-loop</span>
+        <span class="hero-tag">Basal ganglia</span>
+      </div>
+    </div>
+    <div>
+      <div class="hero-pi">
+        <div class="hero-pi-name">Dr Edward Rhodes</div>
+        <div class="hero-pi-role">
+          Lecturer in Cognitive Neuroscience<br>
+          University of Liverpool · est. Feb 2026<br>
+          Formerly UK DRI / Imperial College London
+        </div>
+        <div class="hero-pi-stats">
+          <div class="pi-stat"><div class="pi-stat-num">8+</div><div class="pi-stat-lbl">Years PD research</div></div>
+          <div class="pi-stat"><div class="pi-stat-num">3</div><div class="pi-stat-lbl">Grants held</div></div>
+          <div class="pi-stat"><div class="pi-stat-num">2</div><div class="pi-stat-lbl">Open positions</div></div>
+        </div>
+      </div>
+      <div class="hero-news">
+        <div class="news-dot"></div>
+        AMS Springboard Award submitted · April 2026
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH THEMES -->
+  <section class="themes anim-3" id="research">
+    <div class="section-label">Research themes</div>
+    <div class="themes-grid">
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--teal-light);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5" stroke="#0f6e56" stroke-width="1.5"/>
+            <path d="M5 8h6M8 5v6" stroke="#0f6e56" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="theme-num" style="color:var(--teal);">01 — Stimulation</div>
+        <div class="theme-title">Temporal interference stimulation</div>
+        <div class="theme-body">Frequency- and phase-specific TI protocols that reach deep structures — globus pallidus internus, hippocampus — non-invasively. Moving beyond fixed-parameter approaches toward individually optimised fields.</div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--blue-light);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <polyline points="1,11 4,5 6,9 9,4 12,8 15,5" stroke="#185fa5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="theme-num" style="color:var(--blue);">02 — Signal processing</div>
+        <div class="theme-title">Real-time EEG analysis</div>
+        <div class="theme-body">Spectral decomposition, oscillatory dynamics, and EEG-triggered closed-loop delivery. Building the signal processing pipeline that makes personalised, on-demand neuromodulation tractable.</div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon" style="background:var(--purple-light);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <rect x="2" y="4" width="12" height="9" rx="1.5" stroke="#534ab7" stroke-width="1.5"/>
+            <path d="M5 4V2.5M11 4V2.5" stroke="#534ab7" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M5 8.5h6" stroke="#534ab7" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="theme-num" style="color:var(--purple);">03 — Translation</div>
+        <div class="theme-title">Clinical translation</div>
+        <div class="theme-body">Connecting stimulation science to Parkinson's disease and dementia patient cohorts. Active collaborations across NHS Trusts and NIHR Applied Research networks in the North West.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUR P's -->
+  <section class="four-ps anim-4" id="precision">
+    <div class="section-label">Our philosophy</div>
+    <div class="four-ps-intro">
+      <h2 class="four-ps-h2">Grounded in the principles of <span>precision medicine</span></h2>
+      <p class="four-ps-lead">Effective therapy for neurodegenerative disease cannot be one-size-fits-all. Every aspect of our research is designed around four interlocking principles — a framework that places the individual patient, not the average, at the centre of scientific and clinical decision-making.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="p-card p-predictive">
+        <div class="p-letter" aria-hidden="true">P</div>
+        <div class="p-badge">Predictive</div>
+        <div class="p-title">Anticipating disease before it takes hold</div>
+        <div class="p-body">We use EEG biomarkers — particularly pathological beta oscillations in the basal ganglia — to identify neural signatures that precede clinical symptom onset and predict individual treatment response.</div>
+        <div class="p-example"><strong>In practice:</strong> pre-treatment beta power as a predictor of GPi-TI stimulation response in Parkinson's disease</div>
+      </div>
+      <div class="p-card p-preventive">
+        <div class="p-letter" aria-hidden="true">P</div>
+        <div class="p-badge">Preventive</div>
+        <div class="p-title">Intervening before irreversible damage</div>
+        <div class="p-body">Temporal interference stimulation offers a non-invasive route to modulating deep brain circuits before patients reach the threshold for surgical intervention — opening a window for early, low-risk neuromodulation.</div>
+        <div class="p-example"><strong>In practice:</strong> non-invasive GPi targeting as an alternative to DBS in early-stage Parkinson's disease</div>
+      </div>
+      <div class="p-card p-personalised">
+        <div class="p-letter" aria-hidden="true">P</div>
+        <div class="p-badge">Personalised</div>
+        <div class="p-title">Tuned to the individual brain</div>
+        <div class="p-body">Each patient's oscillatory dynamics are unique. Our closed-loop approach reads each individual's real-time EEG and delivers stimulation at their specific beta frequency and optimal oscillatory phase — not a population average.</div>
+        <div class="p-example"><strong>In practice:</strong> individualised beta-frequency TI outperforms fixed-frequency and sham in pilot data</div>
+      </div>
+      <div class="p-card p-participatory">
+        <div class="p-letter" aria-hidden="true">P</div>
+        <div class="p-badge">Participatory</div>
+        <div class="p-title">Science built with patients, not on them</div>
+        <div class="p-body">Through partnerships with NHS Trusts and NIHR Applied Research Collaboration networks, we embed patient and public involvement throughout our research — from study design to outcome selection to dissemination.</div>
+        <div class="p-example"><strong>In practice:</strong> PPI representation in AMS Springboard study design; NIHR ARC North West Coast collaboration</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="approach anim-5">
+    <div class="approach-text">
+      <div class="section-label" style="margin-bottom:20px;">Our approach</div>
+      <h2 class="approach-h2">Closed-loop, not open-loop</h2>
+      <p class="approach-body">Most non-invasive stimulation delivers fixed parameters regardless of the brain's current state. We argue this is the wrong model. By reading ongoing beta oscillations in real time and triggering stimulation at specific oscillatory phases, we can engage target circuits when they are most susceptible — and stop when they are not.</p>
+      <p class="approach-body">This closed-loop architecture is what our lab is building toward: an EEG-informed, individualised TI system that adapts to the person, not the protocol.</p>
+      <a class="approach-link" href="#publications">Read about our methods <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="approach-graphic">
+      <svg viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px;" role="img" aria-label="Closed-loop diagram showing EEG recording feeding into phase decode, which triggers TI stimulation, which feeds back to EEG">
+        <title>Closed-loop TI stimulation diagram</title>
+        <rect x="80" y="14" width="100" height="38" rx="4" fill="#e6f1fb" stroke="#b5d4f4" stroke-width="1"/>
+        <text x="130" y="30" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" font-weight="600" fill="#185fa5">EEG RECORDING</text>
+        <text x="130" y="43" text-anchor="middle" font-family="Syne,sans-serif" font-size="8" fill="#378add">Real-time beta power</text>
+        <rect x="3" y="118" width="100" height="38" rx="4" fill="#e1f5ee" stroke="#9fe1cb" stroke-width="1"/>
+        <text x="53" y="134" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" font-weight="600" fill="#0f6e56">DECODE</text>
+        <text x="53" y="147" text-anchor="middle" font-family="Syne,sans-serif" font-size="8" fill="#1d9e75">Phase detection</text>
+        <rect x="157" y="118" width="100" height="38" rx="4" fill="#eeedfe" stroke="#cecbf6" stroke-width="1"/>
+        <text x="207" y="134" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" font-weight="600" fill="#534ab7">TI STIMULATE</text>
+        <text x="207" y="147" text-anchor="middle" font-family="Syne,sans-serif" font-size="8" fill="#7f77dd">GPi targeting</text>
+        <path d="M100 48 Q53 75 53 118" stroke="#b5d4f4" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a1)"/>
+        <path d="M103 137 L157 137" stroke="#9fe1cb" stroke-width="1.5" marker-end="url(#a2)"/>
+        <path d="M207 118 Q207 75 160 52" stroke="#cecbf6" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a3)"/>
+        <defs>
+          <marker id="a1" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#b5d4f4"/></marker>
+          <marker id="a2" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#9fe1cb"/></marker>
+          <marker id="a3" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#cecbf6"/></marker>
+        </defs>
+        <text x="130" y="97" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" font-weight="700" fill="#1c1c1a">CLOSED</text>
+        <text x="130" y="109" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" font-weight="700" fill="#1c1c1a">LOOP</text>
+        <text x="130" y="186" text-anchor="middle" font-family="Syne,sans-serif" font-size="8" fill="#8c8c86">Parkinson's disease · Dementia</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="pubs anim-6" id="publications">
+    <div class="section-label">Selected publications</div>
+
+    <div class="pub-row">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">Non-invasive temporal interference stimulation of the human hippocampus</div>
+        <div class="pub-meta">Violante IR, Alania K, Cassara AM, Neufeld E, Rhodes E et al. &nbsp;·&nbsp; <span class="j">Nature Neuroscience</span> 26, 1994–2004</div>
+      </div>
+      <div class="pub-arrow" aria-hidden="true">→</div>
+    </div>
+
+    <div class="pub-row">
+      <div class="pub-year">2024</div>
+      <div>
+        <div class="pub-title">Individualised beta-frequency GPi temporal interference stimulation modulates corticospinal excitability</div>
+        <div class="pub-meta">Rhodes E et al. &nbsp;·&nbsp; <span class="j">Brain Stimulation</span> · in preparation</div>
+      </div>
+      <div class="pub-arrow" aria-hidden="true">→</div>
+    </div>
+
+    <div class="pub-row">
+      <div class="pub-year">2022</div>
+      <div>
+        <div class="pub-title">Closed-loop non-invasive neuromodulation: targeting the globus pallidus internus in healthy adults</div>
+        <div class="pub-meta">Rhodes E et al. &nbsp;·&nbsp; <span class="j">Brain Stimulation</span> · CloseNIT grant output</div>
+      </div>
+      <div class="pub-arrow" aria-hidden="true">→</div>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <div class="join-wrap anim-7" id="join">
+    <div class="join">
+      <div>
+        <div class="join-h3">Join the lab</div>
+        <div class="join-sub">PhD projects in TI stimulation, EEG signal processing, and clinical translation. Enquiries welcome.</div>
+      </div>
+      <a class="join-btn" href="mailto:e.rhodes@liverpool.ac.uk">GET IN TOUCH</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Rhodes Lab · University of Liverpool · 2026</div>
+    <div class="footer-links">
+      <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="https://orcid.org" target="_blank" rel="noopener">ORCID</a>
+      <a href="mailto:e.rhodes@liverpool.ac.uk">e.rhodes@liverpool.ac.uk</a>
+    </div>
+  </footer>
+
+</body>
+</html>
